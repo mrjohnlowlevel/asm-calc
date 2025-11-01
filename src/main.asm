@@ -1,5 +1,7 @@
 section .bss
-        uinp: resb 255  ; 8-bit int limit, i don't know what the fuck im doing
+        uinp1: resb 255
+        uinp2: resb 255
+        uinp3: resb 255
 
 section .text
         global _start
@@ -17,14 +19,29 @@ print:
         ret
 
 _start:
-        mov rsi, uinp
+        mov rsi, user_digit1_str
+        mov rdx, user_digit1_len
+        call print
+
+        mov rsi, uinp1
         mov rdx, 255
         call get_user_input
 
-        mov rsi, uinp
+        mov rsi, uinp1
         mov rdx, 255
         call print
 
         mov rax, 60
         xor rdi, rdi
         syscall
+
+
+section .data
+        user_digit1_str: db "Enter a number: "
+        user_digit1_len: equ $-user_digit1_str
+
+        user_oper_str: db "Enter an operator [+ - * /]: "
+        user_oper_len: equ $-user_oper_str
+
+        user_digit2_str: db "Enter another number: "
+        user_digit2_len: equ $-user_digit2_str
