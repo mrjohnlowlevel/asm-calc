@@ -1,5 +1,5 @@
 section .data
-        test_str: db "Hello, World!",10
+        test_str: db "Hello, dev branch!",10
         testl: equ $-test_str
 
 section .text
