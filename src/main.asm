@@ -27,9 +27,21 @@ _start:
         mov rdx, 255
         call get_user_input
 
-        mov rsi, uinp1
-        mov rdx, 255
+        mov rsi, user_oper_str
+        mov rdx, user_oper_len
         call print
+
+        mov rsi, uinp2
+        mov rdx, 255
+        call get_user_input
+
+        mov rsi, user_digit2_str
+        mov rdx, user_digit2_len
+        call print
+
+        mov rsi, uinp3
+        mov rdx, 255
+        call get_user_input
 
         mov rax, 60
         xor rdi, rdi
